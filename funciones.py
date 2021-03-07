@@ -38,3 +38,18 @@ def batalla_atacantes(fich,nom):
     lista.append(atacante)
     lista.append(defensore)
     return lista
+
+def listar_casas(fich):
+    lista = []
+    for var in fich.xpath('//atacantes/atacante/text()'):
+        if var not in lista:
+            lista.append(var)
+    return lista
+
+def casa_batalla(fich,ca):
+    lista = []
+    ata = fich.xpath('//contendientes/ejercito_atacante/atacantes[atacante="%s"]/../../../nombre/text()'%ca)
+    defe = fich.xpath('//contendientes/ejercito_defensor/defensores[defensor="%s"]/../../../nombre/text()'%ca)
+    lista.append(ata)
+    lista.append(defe)
+    return lista
