@@ -30,3 +30,11 @@ def contar_muertes(fich):
         if int(var) > 0:
             lista.append(int(var))
     return sum(lista)
+
+def batalla_atacantes(fich,nom):
+    lista = []
+    atacante = fich.xpath('/raiz/batalla[nombre="%s"]//atacantes/atacante/text()'%nom)
+    defensore = fich.xpath('/raiz/batalla[nombre="%s"]//defensores/defensor/text()'%nom)
+    lista.append(atacante)
+    lista.append(defensore)
+    return lista
