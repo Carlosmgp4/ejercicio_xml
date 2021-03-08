@@ -53,3 +53,19 @@ def casa_batalla(fich,ca):
     lista.append(ata)
     lista.append(defe)
     return lista
+
+def listar_regiones(fich):
+    lista = []
+    for var in fich.xpath('//region/text()'):
+        if var not in lista:
+            lista.append(var)
+    return lista
+
+def region_batalla(fich,regi):
+    lista = []
+    bata = fich.xpath('/raiz/batalla[region="%s"]//nombre/text()'%regi)
+    rey1 = fich.xpath('/raiz/batalla[region="%s"]//contendientes/ejercito_atacante/rey_atacante/text()'%regi)
+    rey2 = fich.xpath('/raiz/batalla[region="%s"]//contendientes/ejercito_defensor/rey_defensor/text()'%regi)
+    for b,r1,r2 in zip(bata,rey1,rey2):
+        lista.append([b,r1,r2])
+    return lista

@@ -49,6 +49,15 @@ while opcion != 6:
                 print (var)
         print()
     elif opcion == 5:
-        
+        print ("Las regiones disponibles son: ")
+        for var in listar_regiones(fich):
+            print (var)
+        print()
+        regi = input("De que región desea realizar la consulta: ")
+        print()
+        print ("La información relevante a las batallas acontecidas en esta región son:")
+        for var in region_batalla(fich,regi):
+            print ("Batalla: %s. Rey atacante: %s. Rey defensor: %s" % (var[0],var[1],var[2]))
+        print()
         
     opcion = menu()
